@@ -29,7 +29,7 @@ jobs:
             echo "newversion=$((version))"
             echo "CURLVERSION=$((version))" >> $GITHUB_OUTPUT
             
-            curl -X 'POST' \
+            # curl -X 'POST' \
               'https://api.newrelic.com/graphql' \
               -H 'Content-Type: application/json' \
               -H 'API-Key: NRAK-VOIHYB7MPC7PBTIBPW9M9G657SE' \
