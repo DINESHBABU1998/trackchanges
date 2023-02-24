@@ -35,7 +35,7 @@ jobs:
               -H 'API-Key: NRAK-VOIHYB7MPC7PBTIBPW9M9G657SE' \
               --data-binary '{{"query":"mutation {\n  changeTrackingCreateDeployment(deployment: {version: \"'"$version"'\", user: \"t.dineshbabu@cloudeq.com\", groupId: \"78641\", entityGuid: \"MzY3OTk4NXxBUE18QVBQTElDQVRJT058MTMwMjU5NzI5NQ\", description: \"create a new marker\", deploymentType: BASIC, deepLink: \"https://github.com/DINESHBABU1998/nrtrack\", commit: \"INSERT_A_COMMIT_HASH\", changelog: \"test log\"}) {\n    changelog\n    commit\n    deepLink\n    deploymentId\n    deploymentType\n    description\n    entityGuid\n    groupId\n    user\n    version\n  }\n}\n", "variables":""}'
       
-      - run : echo 'FAILURES:{{ steps.testcases.outputs.CURLVERSION }}'
+      - run : echo 'FAILURES:{{ steps.testcases.output.CURLVERSION }}'
         if : failure()
 
 
