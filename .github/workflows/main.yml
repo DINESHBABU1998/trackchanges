@@ -1,4 +1,4 @@
-name: Change Tracking
+name: Change Tracking Marker2
   
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
@@ -29,12 +29,9 @@ jobs:
             echo "newversion=$((version))"
             echo "CURLVERSION=$((version))" >> $GITHUB_OUTPUT
             
-            curl -X 'POST' \'https://api.newrelic.com/graphql' \
-            -H 'Content-Type: application/json' \
-            -H 'API-Key: NRAK-IXMD84CHERKDM7LHK64S7M7D2FE' \
-            --data-binary '{"query":"mutation {changeTrackingCreateDeployment(deployment: {version: \"'"$version"'\", entityGuid: \"MzY1NTM3MnxBUE18QVBQTElDQVRJT058MTA2NzUyNzk1Nw\"}) {\n deploymentId\n entityGuid\n }\n}\n", "variables":""}'
-    
-
-
-
+            curl -X 'POST' \
+              'https://api.newrelic.com/graphql' \
+              -H 'Content-Type: application/json' \
+              -H 'API-Key: NRAK-IXMD84CHERKDM7LHK64S7M7D2FE' \
+              --data-binary '{"query":"mutation {\n  changeTrackingCreateDeployment(deployment: {version: \"'"$version"'\", user: \"t.dineshbabu@cloudeq.com\", groupId: \"78641\", entityGuid: \"MzY1NTM3MnxBUE18QVBQTElDQVRJT058MTA2NzUyNzk1Nw\", description: \"create a new marker\", deploymentType: BASIC, deepLink: \"https://github.com/DINESHBABU1998/nrtrack\", commit: \"INSERT_A_COMMIT_HASH\", changelog: \"test log\"}) {\n    changelog\n    commit\n    deepLink\n    deploymentId\n    deploymentType\n    description\n    entityGuid\n    groupId\n    user\n    version\n  }\n}\n", "variables":""}'
 
